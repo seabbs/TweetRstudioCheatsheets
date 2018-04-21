@@ -1,12 +1,13 @@
 ## Load packages required by bot
-library(here)
 library(magrittr)
 library(stringr)
 library(glue)
 library(rtweet)
 
-## Be extra careful about workdir for job scheduling.
-setwd(here())
+## Reset workdir for scheduled job - not ideal
+if (!grepl("TweetRstudioCheatsheets", getwd())) {
+  setwd("TweetRstudioCheatsheets")
+}
 
 ## Clone the cheetsheet repo if it doesn't already exist
 if (!dir.exists("cheatsheets")) {

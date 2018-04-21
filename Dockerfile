@@ -7,7 +7,10 @@ MAINTAINER "Sam Abbott" contact@samabbott.co.uk
 RUN apt-get update && apt-get -y install cron && cron start
 
 ## Install R packages - packrat
-RUN Rscript -e 'install.packages("packrat"); packrat::restore()'
+RUN Rscript -e 'install.packages(c("magrittr", "stringr", "glue", "rtweet", "cronR"))'
 
-## Run bot scheduling on docker run 
+## Run the bot once to initialise
+CMD Rscript -e bot.R
+
+## Run bot scheduling - daily
 CMD Rscript -e schedule_bot.R
