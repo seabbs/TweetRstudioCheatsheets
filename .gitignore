@@ -31,7 +31,11 @@ vignettes/*.pdf
 ## Cheatsheets repo
 cheatsheets/
 
+## Ignore twitter token
+twitter_token.rds
+
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
 .Rproj.user
+packrat/lib*/

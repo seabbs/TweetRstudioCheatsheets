@@ -46,6 +46,9 @@ tweet_text <- glue("Today's #rstats cheatsheet: {pretty_cheatsheet}
 ## Full file path for cheatsheet
 cheatsheet_path <- file.path(getwd(), "cheatsheets", todays_cheatsheet)
 
+token_path <- file.path(getwd(), "twitter_token.rds")
+
 ## Post tweet
 post_tweet(status = tweet_text,
-           media = cheatsheet_path)
+           media = cheatsheet_path,
+           twitter_token = token_path)
