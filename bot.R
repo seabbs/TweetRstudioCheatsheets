@@ -46,7 +46,7 @@ pretty_cheatsheet <- todays_cheatsheet %>%
 ## Get 
 ## Make tweet text
 tweet_text <- glue("Today's #rstats cheatsheet: {pretty_cheatsheet}
-                   Link: https://github.com/rstudio/cheatsheets/raw/master/{todays_cheatsheet}
+                   Download: https://github.com/rstudio/cheatsheets/raw/master/{todays_cheatsheet}
                    See more: https://www.rstudio.com/resources/cheatsheets/
                    Contribute your own: https://github.com/rstudio/cheatsheets")
 

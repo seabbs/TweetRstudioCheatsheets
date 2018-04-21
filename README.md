@@ -10,7 +10,7 @@ This bot has been set-up to run as a self contained [docker](https://www.docker.
 
 1. Clone the repository
 
-``` bash
+```bash
 git clone https://github.com/seabbs/TweetRstudioCheatsheets.git
 ```
 
@@ -18,12 +18,18 @@ git clone https://github.com/seabbs/TweetRstudioCheatsheets.git
 
 1. Navigate to the `TweetRstudioCheatsheets` and build the docker container.
 
-``` bash
+```bash
 docker build . -t daily_r_cheatsheets
 ```
 
-1. Run the docker container
+1. Run the docker container.
 
-``` bash
+```bash
 docker run -d --name daily_r_cheatsheets daily_r_cheatsheets
+```
+
+1. Check the logs to see if everything is working as expected. A cheatsheet should be posted, followed by a CRON job being set to repeat this daily.
+
+```bash
+docker logs -f daily_r_cheatsheets
 ```

@@ -10,13 +10,20 @@ RUN apt-get update && apt-get -y install cron && cron start
 RUN apt-get install -y \
 	libssl-dev \
     libcurl4-openssl-dev \
+    git \
     && apt-get clean
 
-## Install R packages
+## Install R packages - MRAN
 RUN Rscript -e 'install.packages(c("magrittr", "stringr", "glue", "rtweet", "cronR"))'
 
-## Run the bot once to initialise
-CMD Rscript -e bot.R
+ADD . home/TweetRstudioCheatsheets
 
-## Run bot scheduling - daily
-CMD Rscript -e schedule_bot.R
+WORKDIR  home/TweetRstudioCheatsheets
+
+## Create log file
+RUN touch bot.log
+
+## Run the bot once to initialise, schedule and hold open the container
+CMD Rscript bot.R \\
+	&& Rscript schedule_bot.R \\
+	&& tail -f bot.log
