@@ -1,8 +1,12 @@
 ## Load packages required by bot
+library(here)
 library(magrittr)
 library(stringr)
 library(glue)
 library(rtweet)
+
+## Be extra careful about workdir for job scheduling.
+setwd(here())
 
 ## Clone the cheetsheet repo if it doesn't already exist
 if (!dir.exists("cheatsheets")) {

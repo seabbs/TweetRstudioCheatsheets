@@ -34,6 +34,9 @@ cheatsheets/
 ## Ignore twitter token
 twitter_token.rds
 
+## Ignore bot log
+bot.log
+
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md

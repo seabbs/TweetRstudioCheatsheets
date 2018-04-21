@@ -8,6 +8,5 @@ bot_path <- file.path(getwd(), "bot.R")
 bot_cmd <- cronR::cron_rscript(bot_path, log_append = TRUE)
 
 ## Schedule
-cron_add(bot_cmd, "daily",
-         at = "12AM",
+cron_add(bot_cmd, "daily", at = "3AM",
          description = "Post a random R cheatsheet daily")

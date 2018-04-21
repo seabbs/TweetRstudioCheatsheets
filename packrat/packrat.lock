@@ -72,6 +72,12 @@ Version: 0.4.2
 Hash: b4096a4f6a6736138e9a825c2baaacf0
 Requires: pkgconfig, rlang
 
+Package: htmltools
+Source: CRAN
+Version: 0.3.6
+Hash: 358f767a496785afb8426c3abc8b6471
+Requires: Rcpp, digest
+
 Package: httpuv
 Source: CRAN
 Version: 1.4.1
@@ -104,6 +110,12 @@ Package: mime
 Source: CRAN
 Version: 0.5
 Hash: 463550cf44fb6f0a2359368f42eebe62
+
+Package: miniUI
+Source: CRAN
+Version: 0.1.1
+Hash: e85626581f80b1fe6c92a96ec348efc5
+Requires: htmltools, shiny
 
 Package: openssl
 Source: CRAN
@@ -143,11 +155,28 @@ Source: CRAN
 Version: 0.2.0
 Hash: 647e2e50a72557d1a770dcd6701e562b
 
+Package: rstudioapi
+Source: CRAN
+Version: 0.7
+Hash: e2ebaff8160aff3e6b32e6e78a693c2d
+
 Package: rtweet
 Source: CRAN
 Version: 0.6.0
 Hash: 35241042f64e197beff89d55d10bca9a
 Requires: bit64, httr, jsonlite, magrittr, openssl, readr, tibble
+
+Package: shiny
+Source: CRAN
+Version: 1.0.5
+Hash: 4d47532a807122bfd6bc3818310f9d2e
+Requires: R6, digest, htmltools, httpuv, jsonlite, mime, sourcetools,
+    xtable
+
+Package: sourcetools
+Source: CRAN
+Version: 0.1.6
+Hash: 226d56d7469587da40b0f96180e711b4
 
 Package: stringi
 Source: CRAN
@@ -170,3 +199,8 @@ Package: utf8
 Source: CRAN
 Version: 1.1.3
 Hash: a2fe6a996668ee5850b7719f365e831b
+
+Package: xtable
+Source: CRAN
+Version: 1.8-2
+Hash: 7293235cfcc14cdff1ce7fd1a0212031
