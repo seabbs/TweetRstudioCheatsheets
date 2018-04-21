@@ -38,17 +38,26 @@ pretty_cheatsheet <- todays_cheatsheet %>%
   str_remove(".pdf") %>% 
   str_replace("-", " ")
 
+## Get 
 ## Make tweet text
 tweet_text <- glue("Today's #rstats cheatsheet: {pretty_cheatsheet}
+                   Link: https://github.com/rstudio/cheatsheets/raw/master/{todays_cheatsheet}
                    See more: https://www.rstudio.com/resources/cheatsheets/
                    Contribute your own: https://github.com/rstudio/cheatsheets")
 
-## Full file path for cheatsheet
-cheatsheet_path <- file.path(getwd(), "cheatsheets", todays_cheatsheet)
+## Full file path for cheatsheet (png)
+cheatsheet_path <- todays_cheatsheet %>% 
+  str_replace(".pdf", ".png") %>% 
+  {file.path(getwd(), "cheatsheets", "pngs", .)}
 
 token_path <- file.path(getwd(), "twitter_token.rds")
 
-## Post tweet
-post_tweet(status = tweet_text,
-           media = cheatsheet_path,
-           twitter_token = token_path)
+if (file.exists(token_path)) {
+  ## Post tweet
+  post_tweet(status = tweet_text,
+             media = cheatsheet_path,
+             token = readRDS(token_path))
+}else {
+  warning("Tweet not posted as twitter_token.rds not found.")
+}
+
