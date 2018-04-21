@@ -28,6 +28,10 @@ vignettes/*.pdf
 /*_cache/
 /cache/
 
+## Cheatsheets repo
+cheatsheets/
+
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
+.Rproj.user
