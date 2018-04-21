@@ -4,7 +4,7 @@ FROM rocker/r-ver:3.4.4
 MAINTAINER "Sam Abbott" contact@samabbott.co.uk
 
 ## Get cron for scheduling
-RUN apt-get update && apt-get -y install cron && cron start
+RUN apt-get update && apt-get -y install cron
 
 ## Get libs required by packages
 RUN apt-get install -y \
@@ -24,6 +24,7 @@ WORKDIR  home/TweetRstudioCheatsheets
 RUN touch bot.log
 
 ## Run the bot once to initialise, schedule and hold open the container
-CMD Rscript bot.R \\
+CMD Rscript bot.R
+    && service cron start \\
 	&& Rscript schedule_bot.R \\
 	&& tail -f bot.log

@@ -4,9 +4,16 @@ library(stringr)
 library(glue)
 library(rtweet)
 
-## Reset workdir for scheduled job - not ideal
+getwd()
+
+## Reset workdir for scheduled job docker - not ideal
 if (!grepl("TweetRstudioCheatsheets", getwd())) {
-  setwd("TweetRstudioCheatsheets")
+  if (dir.exists("TweetRstudioCheatsheets")) {
+    setwd("TweetRstudioCheatsheets")
+    }else{
+      setwd("/home/TweetRstudioCheatsheets")
+    }
+  
 }
 
 ## Clone the cheetsheet repo if it doesn't already exist
