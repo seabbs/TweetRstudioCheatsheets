@@ -24,7 +24,7 @@ WORKDIR  home/TweetRstudioCheatsheets
 RUN touch bot.log
 
 ## Run the bot once to initialise, schedule and hold open the container
-CMD Rscript bot.R
+CMD Rscript bot.R \\
     && service cron start \\
 	&& Rscript schedule_bot.R \\
 	&& tail -f bot.log
