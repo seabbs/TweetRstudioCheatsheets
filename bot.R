@@ -29,8 +29,8 @@ cheatsheets <- list.files(path = "cheatsheets",
                           pattern = "*.pdf")
 
 ## Get the name of the previously used sheet if it exists
-if (file.exists("yesterdays_cheatsheet.rds")) {
-  yesterdays_cheatsheet <- readRDS("yesterdays_cheatsheet.rds")
+if (file.exists("storage/yesterdays_cheatsheet.rds")) {
+  yesterdays_cheatsheet <- readRDS("storage/yesterdays_cheatsheet.rds")
 }else{
   yesterdays_cheatsheet <- ""
 }
@@ -43,7 +43,7 @@ cheatsheets <- setdiff(cheatsheets,
 todays_cheatsheet <- sample(cheatsheets, 1)
   
 ## Save as yesterdays cheatsheet
-saveRDS(todays_cheatsheet, "yesterdays_cheatsheet.rds")
+saveRDS(todays_cheatsheet, "storage", "yesterdays_cheatsheet.rds")
 
 ## Make the cheatsheets name pretty
 pretty_cheatsheet <- todays_cheatsheet %>% 
@@ -62,7 +62,7 @@ cheatsheet_path <- todays_cheatsheet %>%
   str_replace(".pdf", ".png") %>% 
   {file.path(getwd(), "cheatsheets", "pngs", .)}
 
-token_path <- file.path(getwd(), "twitter_token.rds")
+token_path <- file.path(getwd(), "storage", "twitter_token.rds")
 
 if (file.exists(token_path)) {
   ## Post tweet
