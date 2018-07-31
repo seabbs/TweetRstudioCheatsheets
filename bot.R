@@ -17,15 +17,15 @@ if (!grepl("TweetRstudioCheatsheets", getwd())) {
 }
 
 ## Clone the cheetsheet repo if it doesn't already exist
-if (!dir.exists("cheatsheets")) {
-  system("git clone https://github.com/rstudio/cheatsheets.git")
+if (!dir.exists("storage/cheatsheets")) {
+  system("cd storage && git clone https://github.com/rstudio/cheatsheets.git")
 }
 
 ## Get new updates to the cheetsheet repo
-system("cd cheatsheets && git pull")
+system("cd storage/cheatsheets && git pull")
 
 ## Get the list of all cheatsheets
-cheatsheets <- list.files(path = "cheatsheets", 
+cheatsheets <- list.files(path = "storage/cheatsheets", 
                           pattern = "*.pdf")
 
 ## Get the name of the previously used sheet if it exists
@@ -60,7 +60,7 @@ tweet_text <- glue("Today's #rstats cheatsheet: {pretty_cheatsheet}
 ## Full file path for cheatsheet (png)
 cheatsheet_path <- todays_cheatsheet %>% 
   str_replace(".pdf", ".png") %>% 
-  {file.path(getwd(), "cheatsheets", "pngs", .)}
+  {file.path(getwd(), "storage", "cheatsheets", "pngs", .)}
 
 token_path <- file.path(getwd(), "storage", "twitter_token.rds")
 
