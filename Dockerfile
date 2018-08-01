@@ -20,6 +20,8 @@ ADD . home/TweetRstudioCheatsheets
 
 WORKDIR  home/TweetRstudioCheatsheets
 
+RUN mkdir storage
+
 ## Create log file
 RUN touch bot.log
 
