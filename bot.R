@@ -43,7 +43,7 @@ cheatsheets <- setdiff(cheatsheets,
 todays_cheatsheet <- sample(cheatsheets, 1)
   
 ## Save as yesterdays cheatsheet
-saveRDS(todays_cheatsheet, "storage", "yesterdays_cheatsheet.rds")
+saveRDS(todays_cheatsheet, "storage/yesterdays_cheatsheet.rds")
 
 ## Make the cheatsheets name pretty
 pretty_cheatsheet <- todays_cheatsheet %>% 
