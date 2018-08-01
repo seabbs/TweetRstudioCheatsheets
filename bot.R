@@ -4,7 +4,7 @@ library(stringr)
 library(glue)
 library(rtweet)
 
-getwd()
+message("Current work directory is ", getwd())
 
 ## Reset workdir for scheduled job docker - not ideal
 if (!grepl("TweetRstudioCheatsheets", getwd())) {
@@ -15,6 +15,8 @@ if (!grepl("TweetRstudioCheatsheets", getwd())) {
     }
   
 }
+
+message("Work directory set to ", getwd())
 
 ## Clone the cheetsheet repo if it doesn't already exist
 if (!dir.exists("storage/cheatsheets")) {
@@ -28,6 +30,8 @@ system("cd storage/cheatsheets && git pull")
 cheatsheets <- list.files(path = "storage/cheatsheets", 
                           pattern = "*.pdf")
 
+message("Found the following cheatsheets; ", paste(cheatsheets, collapse = ", "))
+
 ## Get the name of the previously used sheet if it exists
 if (file.exists("storage/yesterdays_cheatsheet.rds")) {
   yesterdays_cheatsheet <- readRDS("storage/yesterdays_cheatsheet.rds")
@@ -35,13 +39,17 @@ if (file.exists("storage/yesterdays_cheatsheet.rds")) {
   yesterdays_cheatsheet <- ""
 }
 
+message("Yesterdays cheatsheet was ", yesterdays_cheatsheet)
+
 ## Excluded yesterdays cheatsheet and template cheatsheet from list
 cheatsheets <- setdiff(cheatsheets, 
                        c("0-template.pdf", yesterdays_cheatsheet))
 
 ## Randomly select today's cheatsheet
 todays_cheatsheet <- sample(cheatsheets, 1)
-  
+ 
+message("Todays cheatsheet is ", todays_cheatsheet)
+
 ## Save as yesterdays cheatsheet
 saveRDS(todays_cheatsheet, "storage/yesterdays_cheatsheet.rds")
 
@@ -63,6 +71,8 @@ cheatsheet_path <- todays_cheatsheet %>%
   {file.path(getwd(), "storage", "cheatsheets", "pngs", .)}
 
 token_path <- file.path(getwd(), "storage", "twitter_token.rds")
+
+message("The path to the token is ", token_path)
 
 if (file.exists(token_path)) {
   ## Post tweet
