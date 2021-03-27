@@ -1,24 +1,31 @@
 from github import Github
 from random import randint
 
-# get the cheatsheets stored as pngs in the Rstudio repository
-repo_path = "rstudio/cheatsheets"
-repo = Github().get_repo(repo_path)
-cheatsheets = repo.get_contents("pngs")
+class cheatsheet:
+    repo_name = "rstudio/cheatsheets"
+    raw_github = "https://raw.githubusercontent.com/rstudio/cheatsheets/master/"
 
-# extract a single random cheatsheet
-# the first is ignored as it is a template
-n_sheets = len(cheatsheets)
-sheet_n = randint(1, n_sheets - 1)
-sheet = cheatsheets[sheet_n]
+    def __init__(self):
+        # get the cheatsheets stored as pngs in the Rstudio repository
+        self.repo = Github().get_repo(self.repo_name)
+        self.cheatsheets = self.repo.get_contents("pngs")
 
-# get the sheet name
-path = sheet.path
-name = path.removesuffix(".png")
-name = name.removeprefix("pngs/")
+        # extract a single random cheatsheet
+        # the first is ignored as it is a template
+        self.n_sheets = len(self.cheatsheets)
+        self.sheet_n = randint(1, self.n_sheets - 1)
+        self.sheet = self.cheatsheets[self.sheet_n]
 
-# get the paths for  the various types (pdf and png)
-raw_github = "https://raw.githubusercontent.com/rstudio/cheatsheets/master/"
-dowload_png = "".join([raw_github, partial_path])
-download_pdf = "".join([raw_github, "cheatsheets", "/", name, ".pdf"])
-https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/data-import.png
+        # get the sheet name
+        self.path = self.sheet.path
+        self.name = self.path.removesuffix(".png")
+        self.name = self.name.removeprefix("pngs/")
+
+        # get the paths for  the various types (pdf and png)
+        self.png = "".join([self.raw_github, self.path])
+        self.pdf = "".join([self.raw_github, self.name, ".pdf"])
+
+
+
+
+
