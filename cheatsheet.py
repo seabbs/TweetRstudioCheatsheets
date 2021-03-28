@@ -1,6 +1,7 @@
 from github import Github
 from random import randint
 import logging
+import requests
 
 logger = logging.getLogger()
 
@@ -40,5 +41,13 @@ class cheatsheet:
         message = " \n".join(message)
         return message
 
-    def download(self, filename)):
-        logger.info("Downloading selected cheatsheet")
+    def download(self, filename):
+        logger.info("Requesting selected cheatsheet")
+        try:
+            request = requests.get(self.png)
+        except requests.exceptions.RequestException as e:
+            logger.error("Error downloading cheatsheet", exc_info=True)
+            raise SystemExit(e)
+        logger.info(f"Downloading cheatsheet to {filename}")
+        with open(filename, "wb") as image:
+            image.write(request.content)
