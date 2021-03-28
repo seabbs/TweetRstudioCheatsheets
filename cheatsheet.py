@@ -1,6 +1,7 @@
 from github import Github
 from random import randint
 
+
 class cheatsheet:
     repo_name = "rstudio/cheatsheets"
     raw_github = "https://raw.githubusercontent.com/rstudio/cheatsheets/master/"
@@ -25,7 +26,12 @@ class cheatsheet:
         self.png = "".join([self.raw_github, self.path])
         self.pdf = "".join([self.raw_github, self.name, ".pdf"])
 
-
-
-
-
+    def message(self):
+        message = [
+            f"Today's #rstats cheatsheet: {self.name}",
+            f"Download: {self.pdf}"
+            "See more: https://www.rstudio.com/resources/cheatsheets/",
+            "Contribute your own: https://github.com/rstudio/cheatsheets",
+        ]
+        message = " \n".join(message)
+        return message
