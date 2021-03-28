@@ -2,15 +2,15 @@ from github import Github
 from random import randint
 import logging
 
-logger = logging.getLogger("cheatsheet")
+logger = logging.getLogger()
 
 
 class cheatsheet:
-    logger.info("Initialising cheatsheet")
     repo_name = "rstudio/cheatsheets"
     raw_github = "https://raw.githubusercontent.com/rstudio/cheatsheets/master/"
 
     def __init__(self):
+        logger.info("Initialising cheatsheet")
         logger.info("Looking up the full cheatsheet list")
         self.repo = Github().get_repo(self.repo_name)
         self.cheatsheets = self.repo.get_contents("pngs")
@@ -39,7 +39,3 @@ class cheatsheet:
         ]
         message = " \n".join(message)
         return message
-
-
-sheet = cheatsheet()
-sheet.message()

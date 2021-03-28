@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 tweepy = "*"
 pygithub = "*"
+python-dotenv = "*"
 
 [dev-packages]
 pylint = "*"

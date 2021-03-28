@@ -1,13 +1,13 @@
-# config.py
 import tweepy
 import logging
+from dotenv import load_dotenv
 import os
-import logging
 
 logger = logging.getLogger("config")
 
 
 def create_api():
+    load_dotenv()
     consumer_key = os.getenv("CONSUMER_KEY")
     consumer_secret = os.getenv("CONSUMER_SECRET")
     access_token = os.getenv("ACCESS_TOKEN")
