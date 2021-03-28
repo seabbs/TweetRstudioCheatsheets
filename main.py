@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
 
-def post_cheatsheet():
+def post_cheatsheet(request=""):
     api = create_api()
     sheet = cheatsheet()
     tweet = sheet.message()

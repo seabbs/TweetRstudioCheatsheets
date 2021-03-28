@@ -16,7 +16,7 @@
 node_modules
 #!include:.gitignore
 Pipfile
-Pipefile.lock
+Pipfile.lock
 README.md
 *.sh
 .pre-commit-config.yaml
