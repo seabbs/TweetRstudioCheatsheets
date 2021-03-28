@@ -29,7 +29,7 @@ class cheatsheet:
     def message(self):
         message = [
             f"Today's #rstats cheatsheet: {self.name}",
-            f"Download: {self.pdf}"
+            f"Download: {self.pdf}",
             "See more: https://www.rstudio.com/resources/cheatsheets/",
             "Contribute your own: https://github.com/rstudio/cheatsheets",
         ]
