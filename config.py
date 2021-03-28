@@ -2,8 +2,9 @@
 import tweepy
 import logging
 import os
+import logging
 
-logger = logging.getLogger()
+logger = logging.getLogger("config")
 
 
 def create_api():

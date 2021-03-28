@@ -1,32 +1,36 @@
 from github import Github
 from random import randint
+import logging
+
+logger = logging.getLogger("cheatsheet")
 
 
 class cheatsheet:
+    logger.info("Initialising cheatsheet")
     repo_name = "rstudio/cheatsheets"
     raw_github = "https://raw.githubusercontent.com/rstudio/cheatsheets/master/"
 
     def __init__(self):
-        # get the cheatsheets stored as pngs in the Rstudio repository
+        logger.info("Looking up the full cheatsheet list")
         self.repo = Github().get_repo(self.repo_name)
         self.cheatsheets = self.repo.get_contents("pngs")
 
-        # extract a single random cheatsheet
-        # the first is ignored as it is a template
+        logger.info("Randomly selecting a cheatsheet")
         self.n_sheets = len(self.cheatsheets)
         self.sheet_n = randint(1, self.n_sheets - 1)
         self.sheet = self.cheatsheets[self.sheet_n]
 
-        # get the sheet name
+        logger.info("Extracting the name of the selected cheatsheet")
         self.path = self.sheet.path
         self.name = self.path.removesuffix(".png")
         self.name = self.name.removeprefix("pngs/")
 
-        # get the paths for  the various types (pdf and png)
+        logger.info("Getting the paths related to the target cheatsheet")
         self.png = "".join([self.raw_github, self.path])
         self.pdf = "".join([self.raw_github, self.name, ".pdf"])
 
     def message(self):
+        logger.info("Building a message with the cheatsheet information")
         message = [
             f"Today's #rstats cheatsheet: {self.name}",
             f"Download: {self.pdf}",
@@ -35,3 +39,7 @@ class cheatsheet:
         ]
         message = " \n".join(message)
         return message
+
+
+sheet = cheatsheet()
+sheet.message()
