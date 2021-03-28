@@ -39,3 +39,6 @@ class cheatsheet:
         ]
         message = " \n".join(message)
         return message
+
+    def download(self, filename)):
+        logger.info("Downloading selected cheatsheet")
