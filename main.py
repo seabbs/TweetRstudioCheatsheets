@@ -21,3 +21,4 @@ def post_cheatsheet(request=""):
         raise e
     filename.close()
     logger.info("Tweet successfully posted")
+    return "Tweet posted"
