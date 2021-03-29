@@ -1,5 +1,6 @@
 import logging
 import os
+import tempfile
 from create_api import create_api
 from cheatsheet import cheatsheet
 
@@ -11,12 +12,12 @@ def post_cheatsheet(request=""):
     api = create_api()
     sheet = cheatsheet()
     tweet = sheet.message()
-    filename = "cheatsheet.png"
-    sheet.download(filename)
+    filename = tempfile.NamedTemporaryFile()
+    sheet.download(filename.name)
     try:
-        api.update_with_media(filename, status=tweet)
+        api.update_with_media(filename.name, status=tweet)
     except Exception as e:
         logger.error("Error posting tweet", exc_info=True)
         raise e
-    os.remove(filename)
+    filename.close()
     logger.info("Tweet successfully posted")
