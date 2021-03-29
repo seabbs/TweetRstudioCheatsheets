@@ -1,3 +1,4 @@
 .vscode
 .env.yaml
 __pycache__
+.env
