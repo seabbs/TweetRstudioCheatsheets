@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
 
-def post_cheatsheet(request=""):
+def post_cheatsheet(event="", context=""):
     api = create_api()
     sheet = cheatsheet()
     tweet = sheet.message()
@@ -21,4 +21,3 @@ def post_cheatsheet(request=""):
         raise e
     filename.close()
     logger.info("Tweet successfully posted")
-    return "Tweet posted"
